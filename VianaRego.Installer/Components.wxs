@@ -1,0 +1,46 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Fragment>
+    <!-- Detailed Service Definition -->
+    <ComponentGroup Id="ServiceComponents" Directory="INSTALLFOLDER">
+      <Component Id="ServiceExecutable" Guid="98fc204f-b745-432f-8e51-d7ff229f0a1c">
+        <!-- The file source is explicit relative path -->
+        <File Id="VianaRego.Edge.Agent.exe" Source="deploy_service\VianaRego.Edge.Agent.exe" KeyPath="yes" />
+        
+        <ServiceInstall Id="ServiceInstaller"
+                        Type="ownProcess"
+                        Name="VianaRego"
+                        DisplayName="VianaRego Edge Orchestrator"
+                        Description="Orchestrates VianaRego Edge Modules and Health"
+                        Start="auto"
+                        Account="LocalSystem"
+                        ErrorControl="normal" />
+
+        <util:ServiceConfig ServiceName="VianaRego"
+                            FirstFailureActionType="restart"
+                            SecondFailureActionType="restart"
+                            ThirdFailureActionType="restart"
+                            ResetPeriodInDays="1"
+                            RestartServiceDelayInSeconds="5" />
+                        
+        <ServiceControl Id="StartService" Start="install" Stop="both" Remove="uninstall" Name="VianaRego" Wait="yes" />
+      </Component>
+      <Component Id="PathEnv" Guid="a65f9227-897d-4516-9b51-9f9392e21334">
+        <Environment Id="UpdatePath" Name="PATH" Value="[INSTALLFOLDER]" Action="set" Part="last" System="yes" />
+        <CreateFolder />
+      </Component>
+    </ComponentGroup>
+
+    <!-- Registry Persistence -->
+    <ComponentGroup Id="RegistryComponents" Directory="INSTALLFOLDER">
+      <Component Id="RegVals" Guid="89be55d8-61af-4ab1-84b0-f739460a7a4b">
+        <RegistryKey Root="HKLM" Key="Software\MeldCX\VianaRego">
+            <RegistryValue Name="__Installed" Value="1" Type="integer" KeyPath="yes" />
+            <RegistryValue Name="MQTT_HOST" Value="[MQTT_HOST]" Type="string" />
+            <RegistryValue Name="MQTT_PORT" Value="[MQTT_PORT]" Type="string" />
+            <RegistryValue Name="MQTT_USER" Value="[MQTT_USER]" Type="string" />
+            <RegistryValue Name="MQTT_PASSWORD" Value="[MQTT_PASSWORD]" Type="string" />
+        </RegistryKey>
+      </Component>
+    </ComponentGroup>
+  </Fragment>
+</Wix>

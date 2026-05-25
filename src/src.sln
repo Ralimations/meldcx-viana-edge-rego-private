@@ -1,0 +1,48 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VianaRego.Cloud.Api", "VianaRego.Cloud.Api\VianaRego.Cloud.Api.csproj", "{0B4CEF26-B976-9F33-8847-EB7073205413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VianaRego.Edge.Agent", "VianaRego.Edge.Agent\VianaRego.Edge.Agent.csproj", "{5684568B-B38F-F5DB-13A1-8437A4A0C37D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VianaRego.Edge.Telemetry", "VianaRego.Edge.Telemetry\VianaRego.Edge.Telemetry.csproj", "{93E7C1F6-F9E9-280D-ED4D-1B4F857CFF32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VianaRego.Edge.Watchdog", "VianaRego.Edge.Watchdog\VianaRego.Edge.Watchdog.csproj", "{EB07AB6C-5278-2C7A-C81C-CBF237513F16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VianaRego.Shared", "VianaRego.Shared\VianaRego.Shared.csproj", "{67847D89-EB01-7C3A-ECBA-56A8BDFDD936}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B4CEF26-B976-9F33-8847-EB7073205413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B4CEF26-B976-9F33-8847-EB7073205413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B4CEF26-B976-9F33-8847-EB7073205413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B4CEF26-B976-9F33-8847-EB7073205413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5684568B-B38F-F5DB-13A1-8437A4A0C37D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5684568B-B38F-F5DB-13A1-8437A4A0C37D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5684568B-B38F-F5DB-13A1-8437A4A0C37D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5684568B-B38F-F5DB-13A1-8437A4A0C37D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93E7C1F6-F9E9-280D-ED4D-1B4F857CFF32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93E7C1F6-F9E9-280D-ED4D-1B4F857CFF32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93E7C1F6-F9E9-280D-ED4D-1B4F857CFF32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93E7C1F6-F9E9-280D-ED4D-1B4F857CFF32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB07AB6C-5278-2C7A-C81C-CBF237513F16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB07AB6C-5278-2C7A-C81C-CBF237513F16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB07AB6C-5278-2C7A-C81C-CBF237513F16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB07AB6C-5278-2C7A-C81C-CBF237513F16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67847D89-EB01-7C3A-ECBA-56A8BDFDD936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67847D89-EB01-7C3A-ECBA-56A8BDFDD936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67847D89-EB01-7C3A-ECBA-56A8BDFDD936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67847D89-EB01-7C3A-ECBA-56A8BDFDD936}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DDB6AAC4-FE91-4DA8-BC5F-A571D94BC8F1}
+	EndGlobalSection
+EndGlobal

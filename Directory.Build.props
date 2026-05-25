@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <!-- Centralizes ./bin and ./obj to ./artifacts/bin and ./artifacts/obj -->
+    <ArtifactsPath>$(MSBuildThisFileDirectory)artifacts</ArtifactsPath>
+    <!-- Prevent project-local artifacts folders from being treated as source inputs. -->
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(MSBuildProjectDirectory)\artifacts\**</DefaultItemExcludes>
+  </PropertyGroup>
+</Project>

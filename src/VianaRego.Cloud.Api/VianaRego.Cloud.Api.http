@@ -1,0 +1,6 @@
+@VianaRego.Cloud.Api_HostAddress = http://localhost:5074
+
+GET {{VianaRego.Cloud.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

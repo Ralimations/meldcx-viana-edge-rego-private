@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/VianaRego.Cloud.Api/VianaRego.Cloud.Api.csproj" />
+    <Project Path="src/VianaRego.Edge.Agent/VianaRego.Edge.Agent.csproj" />
+    <Project Path="src/VianaRego.Edge.Telemetry/VianaRego.Edge.Telemetry.csproj" />
+    <Project Path="src/VianaRego.Edge.Watchdog/VianaRego.Edge.Watchdog.csproj" />
+    <Project Path="src/VianaRego.Shared/VianaRego.Shared.csproj" />
+  </Folder>
+  <Project Path="VianaRego.Installer/VianaRego.Installer.wixproj" Type="b7dd6f7e-def8-4e67-b5b7-07ef123db6f0" />
+</Solution>

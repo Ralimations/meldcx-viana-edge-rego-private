@@ -1,0 +1,38 @@
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <Package Name="VianaRego Edge Agent" Manufacturer="MeldCX" Version="1.0.0.0" UpgradeCode="7e9e4b6a-9b7a-4b6a-9b7a-4b6a9b7a4b6a" Scope="perMachine">
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed."
+                  AllowSameVersionUpgrades="yes"
+                  Schedule="afterInstallValidate" />
+    
+    <MediaTemplate EmbedCab="yes" />
+    <WixVariable Id="WixUILicenseRtf" Value="License.rtf" />
+
+    <util:CloseApplication Id="CloseAgent" Target="VianaRego.Edge.Agent.exe" CloseMessage="yes" RebootPrompt="no" />
+    <util:CloseApplication Id="CloseWatchdog" Target="VianaRego.Edge.Watchdog.exe" CloseMessage="yes" RebootPrompt="no" />
+    <util:CloseApplication Id="CloseTelemetry" Target="VianaRego.Edge.Telemetry.exe" CloseMessage="yes" RebootPrompt="no" />
+
+    <StandardDirectory Id="ProgramFiles64Folder">
+      <Directory Id="ManufacturerFolder" Name="MeldCX">
+        <Directory Id="INSTALLFOLDER" Name="VianaRego">
+            <!-- Files will be harvested here -->
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <Property Id="MQTT_HOST" Value="mqtt.example.internal" Secure="yes" />
+    <Property Id="MQTT_PORT" Value="8883" Secure="yes" />
+    <Property Id="MQTT_USER" Value="replace-me" Secure="yes" />
+    <Property Id="MQTT_PASSWORD" Value="replace-me" Secure="yes" Hidden="yes" />
+
+    <Feature Id="Main">
+      <ComponentGroupRef Id="PublishedComponents" />
+      <ComponentGroupRef Id="ServiceComponents" />
+      <ComponentGroupRef Id="RegistryComponents" />
+    </Feature>
+
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+    
+
+  </Package>
+</Wix>

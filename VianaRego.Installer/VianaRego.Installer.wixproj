@@ -1,0 +1,45 @@
+<Project Sdk="WixToolset.Sdk/4.0.0">
+  <PropertyGroup>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefineConstants>DeployDir=deploy</DefineConstants>
+    <InstallerPlatform>x64</InstallerPlatform>
+    <OutputPath>$(MSBuildProjectDirectory)\$(Configuration)\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="4.0.0" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="4.0.0" />
+    <PackageReference Include="WixToolset.Heat" Version="4.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Package.wxs" />
+    <Compile Include="Components.wxs" />
+  </ItemGroup>
+
+  <!-- PreBuild: Publish all apps to 'deploy' folder -->
+  <Target Name="PublishApps" BeforeTargets="BeforeBuild">
+    <RemoveDir Directories="deploy;deploy_service" />
+    <Exec Command="dotnet publish ..\src\VianaRego.Edge.Agent\VianaRego.Edge.Agent.csproj -c Release -r win-x64 --self-contained true -o deploy" />
+    <Exec Command="dotnet publish ..\src\VianaRego.Edge.Telemetry\VianaRego.Edge.Telemetry.csproj -c Release -r win-x64 --self-contained true -o deploy" />
+    <Exec Command="dotnet publish ..\src\VianaRego.Edge.Watchdog\VianaRego.Edge.Watchdog.csproj -c Release -r win-x64 --self-contained true -o deploy" />
+    
+    <!-- Move Service Exe to separate dir for manual definition -->
+    <MakeDir Directories="deploy_service" />
+    <Move SourceFiles="deploy\VianaRego.Edge.Agent.exe" DestinationFolder="deploy_service" />
+
+    <!-- Copy Edge CLI Tools -->
+    <Copy SourceFiles="..\rego-edge.ps1;..\rego-edge.cmd" DestinationFolder="deploy" />
+  </Target>
+
+  <!-- Harvest files from 'deploy' folder (Everything except the Service EXE) -->
+  <ItemGroup>
+    <HarvestDirectory Include="deploy">
+      <ComponentGroupName>PublishedComponents</ComponentGroupName>
+      <DirectoryRefId>INSTALLFOLDER</DirectoryRefId>
+      <SuppressRootDirectory>true</SuppressRootDirectory>
+      <SuppressRegistry>true</SuppressRegistry>
+    </HarvestDirectory>
+    
+    <!-- We will define the Service Component manually in Components.wxs using explicit path -->
+    <BindPath Include="deploy" />
+  </ItemGroup>
+</Project>
